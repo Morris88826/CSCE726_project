@@ -8,6 +8,10 @@ This project investigates **curriculum negative sampling** strategies for traini
 
 The key challenge in extreme classification is that computing the full softmax over 163K classes per step is expensive. Negative sampling reduces this cost, but the choice of which negatives to include at each step significantly affects convergence. This project proposes a **curriculum approach** that smoothly transitions from easy global negatives to harder semantically-local negatives over training.
 
+## Model checkpoints
+
+Pre-trained checkpoints are available on [Google Drive](https://drive.google.com/drive/folders/1CdzFRg3nbV_qBy66jG0w2iTud8JbPuOr?usp=drive_link).
+
 ## Background
 
 ### SCENT and SOX
