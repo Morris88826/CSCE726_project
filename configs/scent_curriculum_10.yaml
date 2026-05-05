@@ -1,0 +1,20 @@
+data_dir: ./features/treeoflife10m_subset
+root_out_dir: ./outputs/
+
+seed: 2026
+feature_dim: 512
+num_classes: 163002
+data_size: 762654
+save_frequency: 1
+
+epochs: 20
+batch_size: 128
+lr: 0.002
+alpha: 0.0
+momentum: 0.9
+alpha_multiplier: 0.03
+subgroup_size: 10
+
+optimizer: scent
+sampler: 'curriculum' # all, batch, curriculum, null
+same_budget: true
