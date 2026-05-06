@@ -10,7 +10,7 @@ The key challenge in extreme classification is that computing the full softmax o
 
 ## Model checkpoints
 
-Pre-trained checkpoints are available on [Google Drive](https://drive.google.com/drive/folders/1CdzFRg3nbV_qBy66jG0w2iTud8JbPuOr?usp=drive_link).
+Pre-trained checkpoints are available on [Google Drive](https://drive.google.com/drive/folders/1CdzFRg3nbV_qBy66jG0w2iTud8JbPuOr?usp=drive_link). The best model checkpoint is `LinearClassifier_scent_curriculum_100_ep20.pt`.
 
 ## Project Structure
 
