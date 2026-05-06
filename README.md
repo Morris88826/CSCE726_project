@@ -30,7 +30,6 @@ With 163K classes, using all classes per batch step (the `all` strategy) is feas
 
 | Strategy | Description |
 |---|---|
-| `all` | All 163K classes per step (full softmax) |
 | `batch` | Only the unique classes present in the current batch |
 | `global` | Fixed number of random negatives from the full label space |
 | `local` | Random negatives from the same semantic subgroup as a positive class |
@@ -134,17 +133,10 @@ Baseline comparison on TreeOfLife-10M subset (163K classes, 20 epochs):
 
 | Method | Sampler | Val Accuracy |
 |---|---|---|
-| SCENT | batch | 0.26 |
-| SOX | batch | 0.20 |
-
-Curriculum sampling experiments (SCENT, same-budget):
-
-| Sampler | Val Accuracy |
-|---|---|
-| global | — |
-| local | — |
-| curriculum | — |
-
+| SOX | batch | 20.1% |
+| SOX | curriculum | 22.2% |
+| SCENT | batch | 26.4% |
+| SCENT | curriculum | 26.7% |
 *(See `evaluation.ipynb` for full results and plots.)*
 
 ## References
