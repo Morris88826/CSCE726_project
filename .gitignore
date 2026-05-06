@@ -3,3 +3,4 @@ features
 outputs/*/*.pt
 outputs/others
 checkpoints
+.vscode
