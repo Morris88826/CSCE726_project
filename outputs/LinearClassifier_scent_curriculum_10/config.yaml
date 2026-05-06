@@ -1,0 +1,17 @@
+alpha: 0.0
+alpha_multiplier: 0.03
+batch_size: 128
+data_dir: ./features/treeoflife10m_subset
+data_size: 762654
+epochs: 20
+feature_dim: 512
+lr: 0.002
+momentum: 0.9
+num_classes: 163002
+optimizer: scent
+root_out_dir: ./outputs/
+same_budget: true
+sampler: curriculum
+save_frequency: 1
+seed: 2026
+subgroup_size: 10

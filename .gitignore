@@ -1,3 +1,5 @@
 data
 features
-outputs
+outputs/*/*.pt
+outputs/others
+checkpoints
