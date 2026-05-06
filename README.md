@@ -12,41 +12,6 @@ The key challenge in extreme classification is that computing the full softmax o
 
 Pre-trained checkpoints are available on [Google Drive](https://drive.google.com/drive/folders/1CdzFRg3nbV_qBy66jG0w2iTud8JbPuOr?usp=drive_link).
 
-## Background
-
-### SCENT and SOX
-
-SCENT minimizes the **Compositional Entropic Risk Measure (CERM)**:
-
-$$\min_w \rho_\alpha \left( \ell(w; z) \right) = \min_w \frac{1}{\alpha} \log \mathbb{E} \left[ e^{\alpha \ell(w; z)} \right]$$
-
-where the risk measure penalizes worst-case performance more heavily than standard cross-entropy. SCENT uses a stochastic primal-dual optimizer that maintains an auxiliary variable `nu` to handle the compositional objective. SOX is an alternative formulation that fixes a smoothing parameter `gamma` instead.
-
-Both are implemented in LibAUC's `EntLossClassification` and `SCENT` optimizer.
-
-### Negative Sampling in Extreme Classification
-
-With 163K classes, using all classes per batch step (the `all` strategy) is feasible but slow. In practice, one samples a subset of **negative classes** per step. This project compares five strategies:
-
-| Strategy | Description |
-|---|---|
-| `batch` | Only the unique classes present in the current batch |
-| `global` | Fixed number of random negatives from the full label space |
-| `local` | Random negatives from the same semantic subgroup as a positive class |
-| `curriculum` | Linear interpolation between global and local over training epochs |
-
-### Curriculum Sampling
-
-Classes are clustered into semantic subgroups by running **MiniBatchKMeans** on class prototype embeddings (mean-pooled, L2-normalized training features per class). At each training step, a negative is sampled as:
-- **global** (probability `1 - λ_t`): uniform random from the full valid class set
-- **local** (probability `λ_t`): uniform random from the same subgroup as a randomly chosen positive
-
-The mixing coefficient follows a linear schedule:
-
-$$\lambda_t = \begin{cases} 0 & t \le t_1 \\ \lambda_{\max} \cdot \frac{t - t_1}{t_2 - t_1} & t_1 < t < t_2 \\ \lambda_{\max} & t \ge t_2 \end{cases}$$
-
-with defaults `t1=3`, `t2=15`, `λ_max=0.7`. Training starts with purely global negatives (easy), then gradually increases the fraction of hard local negatives.
-
 ## Project Structure
 
 ```
